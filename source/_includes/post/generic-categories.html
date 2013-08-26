@@ -1,0 +1,11 @@
+{% capture category %}{{ pub.categories | category_links | size }}{% endcapture %}
+{% unless category == '0' %}
+<span class="categories">
+	{% for category in pub.categories %}
+	    {{ category | category_link }}
+	    {% unless forloop.last == true %}
+		/ 
+	    {% endunless %}
+	{% endfor %}
+</span>
+{% endunless %}

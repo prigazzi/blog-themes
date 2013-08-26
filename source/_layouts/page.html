@@ -1,0 +1,52 @@
+---
+layout: layout
+
+---
+<div class="row-fluid">
+    <!-- CONTENT -->
+    <div id="content" class="span8">
+        <article role="article">
+            {% if page.title %}
+            <header>
+                <h1 class="entry-title">{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}</h1>
+                {% if page.date %}
+                <p class="well well-small">
+                    {% include post/date.html %}
+                    {{ time }}
+                </p>
+                {% endif %}
+            </header>
+            {% endif %}
+
+            {{ content }}
+
+            {% unless page.sharing == false %}
+            <footer class="well well-small">                
+                <h4>¿Este artículo te pareció interesante?</h4>
+                <p>Entonces puedes recomendárselo a tus amigos o colegas</p>
+                {% include post/sharing.html %}
+            </footer>
+            {% endunless %}
+            
+        </article>
+        {% if site.disqus_short_name and page.comments == true %}
+        <section>
+            <h1>Comments</h1>
+            <div id="disqus_thread" aria-live="polite">
+                {% include post/disqus_thread.html %}
+            </div>
+        </section>
+        {% endif %}
+    </div>
+    {% unless page.sidebar == false %}
+    <!-- ASIDE -->
+    <aside id="sidebar" class="span4">
+        {% if site.blog_index_asides.size %}
+            {% include_array blog_index_asides %}
+        {% else %}
+            {% include_array default_asides %}
+        {% endif %}
+    </aside>
+    <!-- /ASIDE -->
+    {% endunless %}
+</div>

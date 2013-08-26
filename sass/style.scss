@@ -1,0 +1,126 @@
+@import "compass";
+@import "utilities";
+@import "typography";
+@import "archive";
+@import "syntax";
+
+$colorPrimario:       #ff7800 !default;
+
+body {
+  background: #fafafa;
+  color: #555;
+  font-family: 'Open Sans', sans-serif;
+}
+
+article {
+  padding-bottom: 3em;
+
+  h1 {
+    color: $colorPrimario !important;
+    font-weight: normal;
+  }
+
+  h3 {
+    font-weight: normal;
+    margin-top: 0;
+
+    a {
+      color: $colorPrimario !important;
+    }
+    a:hover {
+      border-bottom: 1px dashed #dedede;
+      text-decoration: none;
+    }
+  }
+
+  footer {
+    padding-top: 2em; 
+
+    a, a:focus, a:visited {
+      color: $colorPrimario !important;
+      border-bottom: 1px solid transparent;
+    }
+
+    a:hover {
+      background: rgba($colorPrimario, 0.08);
+      border-bottom: 1px solid lighten($colorPrimario, 30%);
+      text-decoration: none;
+    }
+
+    .readmore {
+      display: inline-block;
+      vertical-align: top;
+      width: 49%;
+
+      .next, .previous {
+        display: block;
+        font-weight: bolder;
+      }
+    }
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal !important;
+}
+
+#main {
+  background: white;
+  border-radius: 6px;
+  border: 6px solid #ededed;
+  margin-top: 60px;
+  padding: 15px;
+}
+
+#mainFooter {
+  background: #ededed;
+  border-top: 1px solid #dcdcdc;
+  font-size: 0.8em;
+  margin-top: 20px;
+
+  h3 {
+    font-family : 'Oleo Script', cursive;
+  }
+
+  .nav-pills {
+    display: inline-block;
+    font-family: 'Oleo Script', cursive;
+    font-size: 1.6em;
+    margin: 16px;
+
+    a, a:hover {
+      color: $colorPrimario;
+    }
+
+    .active a, .active a:hover {
+      color: white;
+      background-color: $colorPrimario;
+    }
+  }
+}
+
+#networks {
+  display: inline-block;
+}
+
+.brand {
+    font-size: 2.2em !important;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.logo {
+  font-family: 'Oleo Script', cursive;
+
+  span {
+    color: $colorPrimario;
+  }
+}
+
+.meta {
+  font-size: 0.8em;
+  display: inline;
+}

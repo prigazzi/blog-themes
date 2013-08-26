@@ -1,0 +1,37 @@
+---
+layout: page
+footer: false
+sharing: false
+sidebar: false
+---
+<h1>Uh. Oh.</h1>
+<h3>Algo no está bien aquí.</h3>
+<p>Al parecer accediste desde un link incorrecto o intentaste acceder a una Url que ya no existe.</p>
+<p>Puedes revisar el <a href="/blog/archivos">Archivo</a> del Blog o ver los <a href="/">últimos posts</a> publicados.</p>
+<p id="sugerencia" class="well well-small" style="display: none;">
+	Parece que ingresaste buscando <span id="url" style="font-weight: bold;"></span>, que ya no se encuentra disponible en este blog, pero aún puedes leerlo en el viejo <span class="logo">ruido<span>digital</span></span>: <a id="oldurl" href=""></a>.
+</p>
+<script>
+	var url = document.URL;
+	var to_old = url.replace(/((www\.)?ruidodigital)/gm, "old.ruidodigital");
+	var query = "http://query.yahooapis.com/v1/public/yql?"+
+				"q=SELECT%20*%20from%20html%20WHERE%20url%3D%22"+encodeURIComponent(to_old)+
+				"%22%20and%0A%20xpath%3D%27%2F%2Ftitle%27&format=json&callback=show_result";
+
+	function show_result(rs)
+	{
+		if(rs.query.count) {
+			$('#sugerencia #url').html(url);
+			$('#sugerencia #oldurl').attr('href', to_old).html(rs.query.results.title);
+			$('#sugerencia').slideDown();
+		}
+	}
+
+	$(function()
+	{
+		var head = document.getElementsByTagName('head')[0];
+		var js = document.createElement("script");
+		js.type="text/javascript"; js.src = query;
+		head.appendChild(js);
+	})
+</script>

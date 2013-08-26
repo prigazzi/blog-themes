@@ -1,0 +1,52 @@
+---
+layout: layout
+single: true
+---
+<div class="row-fluid">
+    <!-- CONTENT -->  
+    <div id="content" class="span8">
+        <article class="hentry" role="article">
+          {% include article.html %}
+          <footer class="well well-small">
+            {% unless page.sharing == false %}
+            <h4>¿Este artículo te pareció interesante?</h4>
+            <p>Entonces puedes recomendárselo a tus amigos o colegas</p>
+            {% include post/sharing.html %}
+            {% endunless %}
+            <h4>Lee a continuación...</h4>
+            <p class="readmore text-left">
+              {% if page.previous.url %}
+                <a class="previous" href="{{page.previous.url}}" title="Anterior: {{page.previous.title}}">&laquo; {{page.previous.title}}</a>
+                {% assign pub = page.previous %}
+                 En {% include post/generic-categories.html %}
+              {% endif %}
+            </p>
+            <p class="readmore text-right">
+              {% if page.next.url %}
+                <a class="next" href="{{page.next.url}}" title="Siguiente: {{page.next.title}}">{{page.next.title}} &raquo;</a>
+                {% assign pub = page.next %}
+                En {% include post/generic-categories.html %}
+              {% endif %}
+            </p>
+          </footer>
+        </article>
+
+        {% if site.disqus_short_name and page.comments == true %}
+        <section>
+            <h1>Comentarios</h1>
+            <div id="disqus_thread" aria-live="polite">{% include post/disqus_thread.html %}</div>
+        </section>
+        {% endif %}
+    </div>
+    {% unless page.sidebar == false %}
+    <!-- ASIDE -->
+    <aside id="sidebar" class="span4">
+        {% if site.blog_index_asides.size %}
+            {% include_array blog_index_asides %}
+        {% else %}
+            {% include_array default_asides %}
+        {% endif %}
+    </aside>
+    <!-- /ASIDE -->
+    {% endunless %}
+</div>
