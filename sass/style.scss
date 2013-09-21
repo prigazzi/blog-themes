@@ -4,10 +4,11 @@
 @import "archive";
 @import "syntax";
 
-$colorPrimario:       #ff7800 !default;
+$colorPrimario:       #4B557D !default;
+$colorBackground:     #fafafa !default;
 
 body {
-  background: #fafafa;
+  background: $colorBackground;
   color: #555;
   font-family: 'Open Sans', sans-serif;
 }
