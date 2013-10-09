@@ -47,7 +47,8 @@ $text-color-light: #aaa !default;
       float: left;
       font-weight: normal;
       margin-top: 17px;
-      position: relative; 
+      position: relative;
+      clear: both;
     }
     time {
       left: 0em;
